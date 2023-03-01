@@ -1,0 +1,133 @@
+<!doctype>
+<html>
+<head>
+    <style>
+        .container.alarm-board {
+            width: 100%;
+            height: 100%;
+            padding-top: 5px;
+            justify-content: space-around;
+            /* align-content: center; */
+
+            display: flex;
+            overflow: hidden;
+        }
+
+        .container.alarm-board > .content:nth-child(n) {
+            flex: 1 1 auto;
+
+            display: flex;
+            flex-basis: 440px;
+        }
+
+        .container.alarm-board > .content:nth-child(n) > .item:nth-child(n) {
+            flex: 1 1 auto;
+
+            align-self: center;
+            text-align: center;
+            flex-basis: 120px;
+        }
+
+        .ui.big.label {
+            width: 90%;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container alarm-board">
+        <div class="content enb-service eu-border">
+            <div class="item">
+                <i class="big icons">
+                    <i class="green wifi icon"></i>
+                    <i class="inverted corner gray wifi icon"></i>
+                </i>
+            </div>
+            <div class="item">
+                <div class="ui black big label">
+                    <span class="i18n" data-i18n="TOTAL">TOTAL</span>
+                    <div id="status-tot" class="detail">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui green big label">
+                    <span class="i18n" data-i18n="INS">INS</span>
+                    <div id="status-ins" class="detail">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui grey big label">
+                    <span class="i18n" data-i18n="OOS">OOS</span>
+                    <div id="status-oos" class="detail">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="content enb-alarm eu-border">
+            <div class="item" style="display:none">
+                <iframe src="silence.mp3" allow="autoplay" id="silence" style="display:none"></iframe>
+                <audio id="audio" src="" loop preload="none" />
+            </div>
+            <!-- <div id="div-allow-sound" class="item">
+                <span id="div-allow-sound-dimmer" class="ui inverted dimmer">
+                    <div id="div-allow-sound-loader" class="ui centered inline loader"></div>
+                </span>
+                <a id="a-allow-sound" href="#" onclick="sendAllowSound(event);" style="text-decoration: none;">
+                    <i id="icon-enb-bell" class="big red bell icon eu-bell-act"></i>
+                </a>
+            </div> -->
+            <div id="div-allow-sound" class="item">
+                <button id="btn-allow-sound" onclick="sendAllowSound(event);" style="padding: 0px; margin: 0px; text-decoration: none; outline: none; background-color: transparent; border: 0px;">
+                    <i id="icon-enb-bell" class="big red bell icon eu-bell-act"></i>
+                </button>
+            </div>
+            <div class="item">
+                <div class="ui red big label">
+                    <span class="i18n" data-i18n="CRI">CRI</span>
+                    <div id="alarm-cri" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui orange big label">
+                    <span class="i18n" data-i18n="MAJ">MAJ</span>
+                    <div id="alarm-maj" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui yellow big label">
+                    <span class="i18n" data-i18n="MIN">MIN</span>
+                    <div id="alarm-min" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="content ems-alarm eu-border">
+            <div class="item">
+                <i class="big icons">
+                    <i class="bell outline icon"></i>
+                </i>
+                EMS
+            </div>
+            <div class="item">
+                <div class="ui red big label">
+                    <span class="i18n" data-i18n="CRI">CRI</span>
+                    <div id="h-alarm-cri" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui orange big label">
+                    <span class="i18n" data-i18n="MAJ">MAJ</span>
+                    <div id="h-alarm-maj" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui yellow big label">
+                    <span class="i18n" data-i18n="MIN">MIN</span>
+                    <div id="h-alarm-min" class="detail" style="user-select: auto;">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

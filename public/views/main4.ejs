@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tagless Chart</title>
+
+    <link rel="stylesheet" href="public/views/main4.css" />
+
+    <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+</head>
+
+<body>
+    <!-- CHART CONTAINER -->
+    <div id="myChart">
+        <a class="zc-ref" href="https://www.zingchart.com">Powered by ZingChart</a>
+    </div>
+    <div class="controls--container">
+        <button id="clear">Clear</button>
+        <button id="stop">Stop</button>
+        <button id="start">Start</button>
+        <button id="random">Randomize Interval</button>
+        <span id="output"></span>
+
+        <h1>웹소켓 테스트</h1>
+
+        <!-- 버튼 2개 생성 -->
+        <button id="btn_send">메시지 전송</button>
+        <button id="btn_stop">메시지 중지</button>
+        <button id="btn_close">연결 끊기</button>
+    </div>
+</body>
+
+<script src="public/views/main4.js"></script>
+
+</html>

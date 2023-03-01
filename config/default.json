@@ -1,0 +1,54 @@
+{
+    "development": {
+        "dbConfig": {
+            "port": 3306,
+            "user": "ems",
+            "password": "Ems.ems@1",
+            "database": "EUCAST_EMS_DB",
+            "connectionLimit": 10,
+            "socketPath": "/var/lib/mysql/mysql.sock",
+            "multipleStatements": true,
+            "insecureAuth": true,
+            "debug": false
+        },
+        "webConfig": {
+            "version": "0.1.0",
+            "host": "192.168.61.8",
+            "port": 48711,
+            "type": 0,
+            "model": "euc",
+            "connectLimit": 16,
+            "lang": "en",
+            "cliVersion": "0.1.0",
+            "configMode": false,
+            "https": false,
+            "firewall": false,
+            "permit": false,
+            "backup": false,
+            "timeout": 5,
+            "totEnbCnt": 10000
+        },
+        "emsConfig": {
+            "version": "0.9.0",
+            "host": "192.168.61.8",
+            "port": 0,
+            "user": "hems",
+            "password": "hems123",
+            "allowFTP": true,
+            "configMode": false
+        },
+        "logConfig": {
+            "enable": true,
+            "level": "info",
+            "path": "logs",
+            "filename": "EMS-GUI",
+            "json": false,
+            "maxSize": "1M",
+            "maxFiles": "14d",
+            "zippedArchive": true,
+            "tailable": true,
+            "stackIndex": 2
+        },
+        "commonConfig": {}
+    }
+}

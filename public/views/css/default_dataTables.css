@@ -1,0 +1,159 @@
+/* begin-style, no margin and padding in DataTables */
+
+/* table.ui.eu-table-full { */
+.ui.table.eu-table-full {
+    width: 100% !important;
+}
+
+div.dt-buttons {
+    margin-bottom: 5px;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.ui.grid>.column:not(.row),
+.ui.grid>.row>.column {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.ui.grid>*,
+.ui.grid>.row {
+    padding: 0px;
+}
+
+/* end-style */
+
+/* change the selected row color */
+
+table.dataTable tbody>tr.selected,
+table.dataTable tbody>tr>.selected {
+    background-color: #A2D3F6;
+}
+
+.changed {
+    background-color: yellow !important;
+}
+
+.changed.selected {
+    background-color: yellowgreen !important;
+}
+
+
+.wide-modal {
+    width: 80% !important;
+}
+
+.filter-modal {
+    width: 45% !important;
+    height: 60% !important;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.checkbox-teal [type="checkbox"]:checked+label:before {
+    border-color: transparent #009688 #009688 transparent;
+}
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon,
+.radio label input[type="radio"]+.cr>.cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon,
+.radio label input[type="radio"]:checked+.cr>.cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr,
+.radio label input[type="radio"]:disabled+.cr {
+    opacity: .5;
+}
+
+table.dataTable td {
+    outline: none;
+}
+
+#neighbor_apply_list_wrapper {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.dataTables_scroll {
+    overflow: auto;
+}
+
+/* altEditor > modal-body 높이 조정 for Batch Job */
+div.modal-content>.modal-body>pre {
+    max-height: 70vh;
+}

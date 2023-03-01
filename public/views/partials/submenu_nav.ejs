@@ -1,0 +1,162 @@
+<div class="ui red menu" style="font-size: 1em; height: 100%;">
+    <div class="item" style="padding: 0px;">
+        <%- include('banner'); %>
+    </div>
+    <% if ("eNB Information"==submenu || "eNB Find"==submenu || "eNB ADD"==submenu || "CLI"==submenu || "Batch"==submenu || "PLD Setting"==submenu || "Neighbor Setting"==submenu || "Rule"==submenu) { %>
+        <div id="cfg-dropdown" class="ui pointing dropdown item">
+            <span class="i18n" data-i18n="Configuration">Configuration</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <% if (serverMode=="multi" ) { %>
+                    <a class="item" href="HeNBInfo">
+                        <span class="i18n" data-i18n="eNB Information">eNB Information</span>
+                    </a>
+                    <a class="item" href="HeNBFind">
+                        <span class="i18n" data-i18n="eNB Find">eNB Find</span>
+                    </a>
+                    <a class="item" href="PLD">
+                        <span class="i18n" data-i18n="PLD Setting">PLD Setting</span>
+                    </a>
+                    <a class="item" href="Neighbor">
+                        <span class="i18n" data-i18n="Neighbor Setting">Neighbor Setting</span>
+                    </a>
+                    <% if(userLevel < 2) { %>
+                        <a class="item" href="HeNBAdd">
+                            <span class="i18n" data-i18n="eNB ADD">eNB ADD</span>
+                        </a>
+                        <% } %>
+                            <a class="item" href="CLI">
+                                <span class="i18n" data-i18n="CLI">CLI</span>
+                            </a>
+                            <% } else { %>
+                                <a class="item" href="HeNBInfo?henbid=1">
+                                    <span class="i18n" data-i18n="eNB Information">eNB Information</span>
+                                </a>
+                                <a class="item" href="PLD?henbid=1">
+                                    <span class="i18n" data-i18n="PLD Setting">PLD Setting</span>
+                                </a>
+                                <a class="item" href="Neighbor?henbid=1">
+                                    <span class="i18n" data-i18n="Neighbor Setting">Neighbor Setting</span>
+                                </a>
+                                <a class="item" href="CLI?henbid=1">
+                                    <span class="i18n" data-i18n="CLI">CLI</span>
+                                </a>
+                                <% } %>
+                                    <a class="item" href="Batch">
+                                        <span class="i18n" data-i18n="Batch">Batch</span>
+                                    </a>
+                                    <% if(firewall && userLevel==0) { %>
+                                        <a class="item" href="Rule">
+                                            <span class="i18n" data-i18n="Rule">Rule</span>
+                                        </a>
+                                        <% } %>
+            </div>
+        </div>
+        <a class="item" style="color: blue; font-weight: bolder;">
+            <span class="i18n" data-i18n="<%=submenu%>">
+                <%=submenu%>
+            </span>
+        </a>
+        <% } else if("Current Alarm"==submenu || "History Alarm"==submenu || "Alarm List"==submenu) { %>
+            <div id="fault-dropdown" class="ui pointing dropdown item">
+                <span class="i18n" data-i18n="Fault">Fault</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="Fault?type=0">
+                        <span class="i18n" data-i18n="Current Alarm">Current Alarm</span>
+                    </a>
+                    <a class="item" href="Fault?type=1">
+                        <span class="i18n" data-i18n="History Alarm">History Alarm</span>
+                    </a>
+                    <a class="item" href="Fault?type=2">
+                        <span class="i18n" data-i18n="Alarm List">Alarm List</span>
+                    </a>
+                </div>
+            </div>
+            <a class="item" style="color: blue; font-weight: bolder;">
+                <span class="i18n" data-i18n="<%=submenu%>">
+                    <%=submenu%>
+                </span>
+            </a>
+            <% } else if("Event History"==submenu || "CLI History"==submenu || "Login History"==submenu || "eNB History"==submenu || "Trace"==submenu) { %>
+                <div id="history-dropdown" class="ui pointing dropdown item">
+                    <span class="i18n" data-i18n="History">History</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="History?type=0">
+                            <span class="i18n" data-i18n="Event History">Event History</span>
+                        </a>
+                        <a class="item" href="History?type=1">
+                            <span class="i18n" data-i18n="CLI History">CLI History</span>
+                        </a>
+                        <a class="item" href="History?type=2">
+                            <span class="i18n" data-i18n="Login History">Login History</span>
+                        </a>
+                        <a class="item" href="History?type=3">
+                            <span class="i18n" data-i18n="eNB History">eNB History</span>
+                        </a>
+                        <a class="item" href="Trace">
+                            <span class="i18n" data-i18n="Trace">Trace</span>
+                        </a>
+                    </div>
+                </div>
+                <a class="item" style="color: blue; font-weight: bolder;">
+                    <span class="i18n" data-i18n="<%=submenu%>">
+                        <%=submenu%>
+                    </span>
+                </a>
+                <% } else if("Account"==submenu || "Status"==submenu || "Fault"==submenu || "Audit"==submenu || "Settings"==submenu) {%>
+                    <div id="hems-dropdown" class="ui pointing dropdown item">
+                        <span class="i18n" data-i18n="EMS">EMS</span>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item" href="ems_account">
+                                <span class="i18n" data-i18n="Account">Account</span>
+                            </a>
+                            <a class="item" href="ems_status">
+                                <span class="i18n" data-i18n="Status">Status</span>
+                            </a>
+                            <a class="item" href="ems_fault">
+                                <span class="i18n" data-i18n="EMS Fault">EMS Fault</span>
+                            </a>
+                            <% if(userLevel==0 && modelName=="mof" ) { %>
+                                <a class="item" href="ems_audit">
+                                    <span class="i18n" data-i18n="Audit">Audit</span>
+                                </a>
+                                <% } %>
+                                    <a class="item hidden" href="settings">
+                                        <span class="i18n" data-i18n="Settings">Settings</span>
+                                    </a>
+                        </div>
+                    </div>
+                    <a class="item" style="color: blue; font-weight: bolder;">
+                        <span class="i18n" data-i18n="<%=submenu%>">
+                            <%=submenu%>
+                        </span>
+                    </a>
+                    <% } else if("Backup"==submenu || "Restore"==submenu) { %>
+                        <div id="db-dropdown" class="ui pointing dropdown item">
+                            <span class="i18n" data-i18n="DB Backup">DB Backup</span>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="db_backup">
+                                    <span class="i18n" data-i18n="Backup">Backup</span>
+                                </a>
+                                <a class="item" href="db_restore">
+                                    <span class="i18n" data-i18n="Restore">Restore</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a class="item" style="color: blue; font-weight: bolder;">
+                            <span class="i18n" data-i18n="<%=submenu%>">
+                                <%=submenu%>
+                            </span>
+                        </a>
+                        <% } else { %>
+                            <a class="item" style="color: blue; font-weight: bolder;">
+                                <span class="i18n" data-i18n="<%=submenu%>">
+                                    <%=submenu%>
+                                </span>
+                            </a>
+                            <% } %>
+</div>

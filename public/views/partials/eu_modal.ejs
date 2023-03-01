@@ -1,0 +1,47 @@
+<!doctype>
+<html>
+<head></head>
+<body>
+    <!-- Modal -->
+    <div id="notice-modal" class="notice modal hidden" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Notice</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="notice-content"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="table-modal" class="table modal hidden" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Table</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="table-content"></p>
+                    <table id="table_list" class="ui small celled red table" style="margin-top: 10px; width: 100%;">
+                        <thead id="table_list_thead">
+                            <tr id="table_list_thead_tr">
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+FROM ubuntu:latest
+
+ARG INSTALL_NODE_VER=18.12.1
+ARG INSTALL_NVM_VER=0.39.2
+
+RUN apt-get update && apt-get install -y -q --no-install-recommends \
+    vim \
+    net-tools \
+    curl wget \
+    apt-transport-https \
+    build-essential \
+    ca-certificates \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN touch ~/.bashrc
+RUN rm -rf ~/.nvm
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v$INSTALL_NVM_VER/install.sh | bash \
+    && . ~/.nvm/nvm.sh \
+    && nvm install $INSTALL_NODE_VER \
+    && nvm alias default $INSTALL_NODE_VER \
+    && nvm use default
+
+RUN nvm ls
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000

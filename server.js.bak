@@ -1,0 +1,63 @@
+const http = require('http');
+const express = require('express');
+const ejs = require('ejs');
+const path = require('path');
+
+const app = express();
+const server = http.createServer(app);
+const socketIO = require("socket.io");
+const io = socketIO(server);
+
+const HOST = '192.168.28.113';
+const PORT = process.env.PORT || 3000;
+// const PORT = 3000;
+
+// EJS setting
+app.set("view engine", "ejs");
+app.set("views", "./public");
+
+// builtin body-parser for JSON
+app.use(express.json());
+
+// extended for parsing x-www-form-urlencoded
+app.use(express.urlencoded({
+    extended: true
+}));
+
+// app.use(express.static('public'));
+app.use('/views', express.static(path.join(__dirname, 'public/views')));
+app.use('/css', express.static(path.join(__dirname, 'public/views/css')));
+app.use('/partials', express.static(path.join(__dirname, 'public/views/partials')));
+app.use('/csslib', express.static(path.join(__dirname, 'lib/csslib')));
+app.use('/jslib', express.static(path.join(__dirname, 'lib/jslib')));
+app.use('/config', express.static(path.join(__dirname, 'config')));
+
+app.all('/*', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+console.log(`Completed preparing!!!`);
+
+app.get('/', function (req, res) {
+    res.redirect("/main2");
+});
+
+app.get('/main2', function (req, res) {
+    res.render("views/main2");
+});
+
+io.on("connection", (socket) => {
+    console.log(`socket connected`);
+
+    socket.on("disconnect", function (reason) {
+        console.log(`socket disconnected`);
+    });
+
+    socket.on("msg", (data) => {
+        console.log(`ws, data =`, data);
+        io.emit("msg", data); // for test
+    });
+});
+
+server.listen(PORT, () => console.log(`server is running at http://${HOST}:${PORT}/`));

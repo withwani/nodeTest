@@ -1,0 +1,195 @@
+<div class="ui blue menu" style="font-size: 1em; height: 100%;">
+    <div id="about-ems" class="item" style="padding: 0px;">
+        <% include ./banner %>
+    </div>
+    <div id="cfg-dropdown" class="ui pointing dropdown item">
+        <span class="i18n" data-i18n="Configuration">Configuration</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <% if (serverMode=="multi" ) { %>
+                <a href="HeNBInfo" class="item">
+                    <span class="i18n" data-i18n="eNB Information">eNB Information</span>
+                </a>
+                <a href="HeNBFind" class="item">
+                    <span class="i18n" data-i18n="eNB Find">eNB Find</span>
+                </a>
+                <a href="PLD" class="item">
+                    <span class="i18n" data-i18n="PLD Setting">PLD Setting</span>
+                </a>
+                <a href="Neighbor" class="item">
+                    <span class="i18n" data-i18n="Neighbor Setting">Neighbor Setting</span>
+                </a>
+                <% if(userLevel<2) { %>
+                    <a href="HeNBAdd" class="item">
+                        <span class="i18n" data-i18n="eNB ADD">eNB ADD</span>
+                    </a>
+                    <% } %>
+                        <a href="CLI" class="item">
+                            <span class="i18n" data-i18n="CLI">CLI</span>
+                        </a>
+                        <% } else { %>
+                            <a href="HeNBInfo?henbid=1" class="item">
+                                <span class="i18n" data-i18n="eNB Information">eNB Information</span>
+                            </a>
+                            <a href="PLD?henbid=1" class="item">
+                                <span class="i18n" data-i18n="PLD Setting">PLD Setting</span>
+                            </a>
+                            <a href="Neighbor?henbid=1" class="item">
+                                <span class="i18n" data-i18n="Neighbor Setting">Neighbor Setting</span>
+                            </a>
+                            <a href="CLI?henbid=1" class="item">
+                                <span class="i18n" data-i18n="CLI">CLI</span>
+                            </a>
+                            <% } %>
+                                <a href="Batch" class="item">
+                                    <span class="i18n" data-i18n="Batch">Batch</span>
+                                </a>
+                                <% if(firewall && userLevel==0) { %>
+                                    <a href="Rule" class="item">
+                                        <span class="i18n" data-i18n="Rule">Rule</span>
+                                    </a>
+                                    <% } %>
+        </div>
+    </div>
+    <div id="fault-dropdown" class="ui pointing dropdown item">
+        <span class="i18n" data-i18n="Fault">Fault</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="Fault?type=0" class="item">
+                <span class="i18n" data-i18n="Current Alarm">Current Alarm</span>
+            </a>
+            <a href="Fault?type=1" class="item">
+                <span class="i18n" data-i18n="History Alarm">History Alarm</span>
+            </a>
+            <a href="Fault?type=2" class="item">
+                <span class="i18n" data-i18n="Alarm List">Alarm List</span>
+            </a>
+        </div>
+    </div>
+    <a href="stat" class="item">
+        <span class="i18n" data-i18n="Statistics">Statistics</span>
+    </a>
+    <div id="history-dropdown" class="ui pointing dropdown item">
+        <span class="i18n" data-i18n="History">History</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="History?type=0" class="item">
+                <span class="i18n" data-i18n="Event History">Event History</span>
+            </a>
+            <a href="History?type=1" class="item">
+                <span class="i18n" data-i18n="CLI History">CLI History</span>
+            </a>
+            <a href="History?type=2" class="item">
+                <span class="i18n" data-i18n="Login History">Login History</span>
+            </a>
+            <a href="History?type=3" class="item">
+                <span class="i18n" data-i18n="eNB History">eNB History</span>
+            </a>
+            <a href="Trace" class="item">
+                <span class="i18n" data-i18n="Trace">Trace</span>
+            </a>
+        </div>
+    </div>
+    <a href="package" class="item">
+        <span class="i18n" data-i18n="Package">Package</span>
+    </a>
+    <div id="hems-dropdown" class="ui pointing dropdown item">
+        <span class="i18n" data-i18n="EMS">EMS</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="ems_account" class="item">
+                <span class="i18n" data-i18n="Account">Account</span>
+            </a>
+            <a href="ems_status" class="item">
+                <span class="i18n" data-i18n="Status">Status</span>
+            </a>
+            <a href="ems_fault" class="item">
+                <span class="i18n" data-i18n="EMS Fault">EMS Fault</span>
+            </a>
+            <% if(userLevel==0 && modelName=="mof" ) { %>
+                <a href="ems_audit" class="item">
+                    <span class="i18n" data-i18n="Audit">Audit</span>
+                </a>
+                <% } %>
+                    <a href="settings" class="item hidden">
+                        <span class="i18n" data-i18n="Settings">Settings</span>
+                    </a>
+        </div>
+    </div>
+    <a href="realmsg" class="item">
+        <span class="i18n" data-i18n="Realtime Message">Realtime Message</span>
+    </a>
+    <div id="core-dropdown" class="ui pointing dropdown item">
+        <span class="i18n" data-i18n="Core">Core</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="http://<%=hostIp%>:7979/EPC?grade=<%=userLevel%>" class="item">
+                <span class="i18n" data-i18n="EPC">EPC</span>
+            </a>
+            <a href="http://<%=hostIp%>:8989/PTT?grade=<%=userLevel%>" class="item">
+                <span class="i18n" data-i18n="PTT">PTT</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- temporaly block for EPC menu -->
+    <% if (backup && userLevel==0) { %>
+        <div id="db-dropdown" class="ui pointing dropdown item">
+            <span class="i18n" data-i18n="DB Backup">DB Backup</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="db_backup" class="item">
+                    <span class="i18n" data-i18n="Backup">Backup</span>
+                </a>
+                <a href="db_restore" class="item">
+                    <span class="i18n" data-i18n="Restore">Restore</span>
+                </a>
+            </div>
+        </div>
+        <% } %>
+
+            <!-- <a href="help" class="item">
+        <span class="i18n" data-i18n="Help">Help</span>
+    </a> -->
+
+            <div class="right menu">
+                <div id="user-logout" class="ui dropdown item">
+                    <div class="text">
+                        <i class="large user icon"></i>
+                        <!-- beautify ignore:start -->
+                <%=userId %>@<%=clientIp %>(Lv:<%=userLevel %>)
+                <!-- beautify ignore:end -->
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="divider"></div>
+                        <div onclick="window.location='Logout'" class="item">
+                            <i class="power off icon"></i>
+                            <span class="i18n" data-i18n="Logout">Logout</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="padding: 10px; width: 100px;">
+                    <div class="ui image" style="height: 100%;">
+                        <img src="euvision_logo.gif" alt="logo image" style="height: 100%;" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Language for using initList() -->
+            <!-- <select name="listlanguages" class="eu-rightcenter" onchange="langSelectChange(this)">
+    </select> -->
+
+            <!-- Select Language for the customized component, TBD -->
+            <!-- <div id="select-language" class="ui selection dropdown eu-rightcenter hidden">
+        <input type="hidden" name="language">
+        <i class="dropdown icon"></i>
+        <div class="default text">
+            <span class="i18n" data-i18n="Select Language">Select Language</span>
+        </div>
+        <div class="menu">
+            <div class="item" data-value="en"><i class="us flag"></i>English</div>
+            <div class="item" data-value="kr"><i class="kr flag"></i>한국어</div>
+        </div>
+    </div> -->
+</div>

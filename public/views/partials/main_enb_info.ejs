@@ -1,0 +1,188 @@
+<% if (serverMode == "multi") { %>
+    <div class="container-enb-info eu-border">
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="NO">NO</span></div>
+            <div id="HeNB_ID" name="HeNB_ID" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="Name">Name</span></div>
+            <div id="HeNB_Name" name="HeNB_Name" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="AREA">AREA</span></div>
+            <div id="AREA" name="AREA" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="ECI">ECI</span></div>
+            <div id="ECI" name="ECI" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="IP Address">IP Address</span></div>
+            <div id="IP_Addr" name="IP_Addr" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="UL B-width">UL B-width</span></div>
+            <div id="UL_B_width" name="UL_B_width" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="TAC">TAC</span></div>
+            <div id="TAC" name="TAC" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div id="label_HW_Ver" class="ui grey label enb-info-title"><span class="i18n" data-i18n="H/W Ver">H/W Ver</span></div>
+            <div id="HW_Ver" name="HW_Ver" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="DL B-width">DL B-width</span></div>
+            <div id="DL_B_width" name="DL_B_width" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="PCI">PCI</span></div>
+            <div id="PCI" name="PCI" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="S/W ver">S/W ver</span></div>
+            <div id="SW_Ver" name="SW_Ver" class="ui label enb-info-data">-</div>
+        </div>
+        <div class="ui labeled input enb-info-item">
+            <div class="ui grey label enb-info-title"><span class="i18n" data-i18n="Freq Band">Freq Band</span></div>
+            <div id="Freq_Band" name="Freq_Band" class="ui label enb-info-data">-</div>
+        </div>
+    </div>
+    <div id="enb-info-submenu-div">
+        <div class="hidden ui" id="henb-add">
+        </div>
+    </div>
+<% } else { %>
+    <div class="ui grid" style="width:100%; margin:5px; /*background:floralwhite;*/">
+        <form class="ui large form" id="form_enbInfo" style="margin-top:10px; margin-right:10px; max-width:1500px; min-width:200px; width:100%;">
+            <div class="ui divider"></div>
+            <div class="ui header" style="text-align:center; color:white; background:steelblue; margin-bottom:3px; margin-top:3px;">
+                <span class="i18n" data-i18n="Configuration Information">Configuration Information</span>
+            </div>
+
+            <div class="fields" style="margin-bottom:3px; margin-top:10px;">
+                <div class="four wide field hidden">
+                    <label><span class="i18n" data-i18n="eNB ID">eNB ID</span></label>
+                    <input readonly type="text" name="HeNB_ID" id="HeNB_ID" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Name">Name</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" maxlength='32' name="HeNB_Name" id="HeNB_Name" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="S/N">S/N</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" onkeyup="skip_hangul(this);" maxlength='100' name="SN" id="SN" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="OUI">OUI</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" onkeyup="skip_hangul(this);" maxlength='100' name="OUI" id="OUI" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Freq Band">Freq Band</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" onkeyup="skip_hangul(this);" maxlength='100' name="Freq_Band" id="Freq_Band" placeholder="-" value="">
+                </div>
+            </div>
+            <div class="fields" style="margin-bottom:3px; margin-top:3px;">
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="EARFCNUL">EARFCNUL</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='10' name="EARFCNUL" id="EARFCNUL" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="EARFCNDL">EARFCNDL</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='10' name="EARFCNDL" id="EARFCNDL" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="UL B-width">UL B-width</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" onkeyup="skip_hangul(this);" maxlength='10' name="UL_B_width" id="UL_B_width" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="DL B-width">DL B-width</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'string')" onkeyup="skip_hangul(this);" maxlength='10' name="DL_B_width" id="DL_B_width" placeholder="-" value="">
+                </div>
+            </div>
+            <div class="fields" style="margin-bottom:3px; margin-top:3px;">
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="ECI">ECI</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='9' name="ECI" id="ECI" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="TAC">TAC</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='10' name="TAC" id="TAC" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="PCI">PCI</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='10' name="PCI" id="PCI" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="RSI">RSI</span></label>
+                    <input readonly type="text" onkeypress="validate(event,'number')" onkeyup="skip_hangul(this);" maxlength='10' name="RSI" id="RSI" placeholder="-" value="">
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+            <div class="ui header" style="text-align:center; color:white; background:steelblue; margin-bottom:3px; margin-top:3px;">
+                <span class="i18n" data-i18n="Status Information">Status Information</span>
+            </div>
+
+            <div class="fields" style="margin-bottom:3px; margin-top:10px;">
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="State">State</span></label>
+                    <input readonly="a" type="text" id="State" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="OP State">OP State</span></label>
+                    <input readonly="a" type="text" id="Op_State" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="RF State">RF State</span></label>
+                    <input readonly="a" type="text" id="RF_State" placeholder="-" value="">
+                </div>
+            </div>
+            <div class="fields" style="margin-bottom:3px; margin-top:3px;">
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Latitude">Latitude</span></label>
+                    <input readonly="a" type="text" id="Latitude" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Longitude">Longitude</span></label>
+                    <input readonly="a" type="text" id="Longitude" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="H/W Ver">H/W Ver</span></label>
+                    <input readonly="a" type="text" id="HW_Ver" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="S/W ver">S/W ver</span></label>
+                    <input readonly="a" type="text" id="SW_Ver" placeholder="-" value="">
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+            <div class="ui header" style="text-align:center;  color:white; background:steelblue; margin-bottom:3px; margin-top:3px;">
+                <span class="i18n" data-i18n="Network Information">Network Information</span>
+            </div>
+
+            <div class="fields" style="margin-bottom:3px; margin-top:10px;">
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="IP Address">IP Address</span></label>
+                    <input readonly="a" type="text" id="IP_Addr" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Subnet Mask">Subnet Mask</span></label>
+                    <input readonly="a" type="text" id="Sub_Mask" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Default GW">Default GW</span></label>
+                    <input readonly="a" type="text" id="Default_GW" placeholder="-" value="">
+                </div>
+                <div class="four wide field">
+                    <label><span class="i18n" data-i18n="Address Type">Address Type</span></label>
+                    <input readonly="a" type="text" id="Addr_Type" placeholder="-" value="">
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+        </form>
+    </div>
+<% } %>

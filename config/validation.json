@@ -1,0 +1,654 @@
+{
+    "en": {
+        "HeNB_ID": {
+            "identifier": "HeNB_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[1..10000]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "NE_ID": {
+            "identifier": "NE_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[16]"
+            }]
+        },
+        "HeNB_Name": {
+            "identifier": "HeNB_Name",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[32]"
+            }]
+        },
+        "SN": {
+            "identifier": "SN",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[64]"
+            }]
+        },
+        "OUI": {
+            "identifier": "OUI",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "exactLength[6]"
+            }]
+        },
+        "Freq_Band": {
+            "identifier": "Freq_Band",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "minCount[1]"
+            }]
+        },
+        "EARFCNUL": {
+            "identifier": "EARFCNUL",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "EARFCNDL": {
+            "identifier": "EARFCNDL",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "UL_B_width": {
+            "identifier": "UL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[4]"
+            }]
+        },
+        "DL_B_width": {
+            "identifier": "DL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[4]"
+            }]
+        },
+        "ECI": {
+            "identifier": "ECI",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[0..268435455]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "TAC": {
+            "identifier": "TAC",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[0..65535]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "PCI": {
+            "identifier": "PCI",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[0..503]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "RSI": {
+            "identifier": "RSI",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[0..837]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "SeGW1": {
+            "identifier": "SeGW1",
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[64]"
+            }]
+        },
+        "Loc_Info": {
+            "identifier": "Loc_Info",
+            "optional": true,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[200]"
+            }]
+        },
+        "Area": {
+            "identifier": "Area",
+            "optional": false,
+            "rules": [{
+                "type": "maxLength[32]"
+            }]
+        },
+        "EMS_Port": {
+            "identifier": "EMS_Port",
+            "optional": true,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[8]"
+            }]
+        },
+        "S1LinkList": {
+            "identifier": "S1LinkList",
+            "optional": true,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "maxLength[256]"
+            }]
+        },
+        "henb_id": {
+            "identifier": "henb_id",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "integer[1..10000]",
+                "prompt": "{name} must be in an integer range({ruleValue})"
+            }]
+        },
+        "start_date": {
+            "identifier": "start_date",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "minCount[1]"
+            }]
+        },
+        "end_date": {
+            "identifier": "end_date",
+            "optional": false,
+            "rules": [{
+                "type": "empty"
+            }, {
+                "type": "minCount[1]"
+            }]
+        }
+    },
+    "ko": {
+        "HeNB_ID": {
+            "identifier": "HeNB_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[1..10000]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "NE_ID": {
+            "identifier": "NE_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[16]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "HeNB_Name": {
+            "identifier": "HeNB_Name",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[32]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "SN": {
+            "identifier": "SN",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[64]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "OUI": {
+            "identifier": "OUI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "exactLength[6]",
+                "prompt": "{name}는 정확히 {ruleValue}자여야 합니다."
+            }]
+        },
+        "Freq_Band": {
+            "identifier": "Freq_Band",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "minCount[1]",
+                "prompt": "{name}에는 적어도 {ruleValue}개의 선택이 필요합니다."
+            }]
+        },
+        "EARFCNUL": {
+            "identifier": "EARFCNUL",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "EARFCNDL": {
+            "identifier": "EARFCNDL",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "UL_B_width": {
+            "identifier": "UL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[4]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "DL_B_width": {
+            "identifier": "DL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[4]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "ECI": {
+            "identifier": "ECI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[0..268435455]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "TAC": {
+            "identifier": "TAC",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[0..65535]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "PCI": {
+            "identifier": "PCI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[0..503]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "RSI": {
+            "identifier": "RSI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "integer[0..837]",
+                "prompt": "{name}는 정수범위({ruleValue})에 있어야합니다."
+            }]
+        },
+        "SeGW1": {
+            "identifier": "SeGW1",
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[64]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "Loc_Info": {
+            "identifier": "Loc_Info",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[200]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "Area": {
+            "identifier": "Area",
+            "optional": false,
+            "rules": [{
+                "type": "maxLength[32]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "EMS_Port": {
+            "identifier": "EMS_Port",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[8]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        },
+        "S1LinkList": {
+            "identifier": "S1LinkList",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}에는 값이 필요합니다."
+            }, {
+                "type": "maxLength[256]",
+                "prompt": "{name}는 {ruleValue}자를 초과 할 수 없습니다."
+            }]
+        }
+    },
+    "jp": {
+        "HeNB_ID": {
+            "identifier": "HeNB_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[1..10000]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "NE_ID": {
+            "identifier": "NE_ID",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[16]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "HeNB_Name": {
+            "identifier": "HeNB_Name",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[32]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "SN": {
+            "identifier": "SN",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[64]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "OUI": {
+            "identifier": "OUI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "exactLength[6]",
+                "prompt": "{name}は正確に{ruleValue}文字でなければなりません。"
+            }]
+        },
+        "Freq_Band": {
+            "identifier": "Freq_Band",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "minCount[1]",
+                "prompt": "{name}には少なくとも{ruleValue}の選択肢が必要です。"
+            }]
+        },
+        "EARFCNUL": {
+            "identifier": "EARFCNUL",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "EARFCNDL": {
+            "identifier": "EARFCNDL",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[1..65535]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "UL_B_width": {
+            "identifier": "UL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[4]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "DL_B_width": {
+            "identifier": "DL_B_width",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[4]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "ECI": {
+            "identifier": "ECI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[0..268435455]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "TAC": {
+            "identifier": "TAC",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[0..65535]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "PCI": {
+            "identifier": "PCI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[0..503]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "RSI": {
+            "identifier": "RSI",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[0..837]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "SeGW1": {
+            "identifier": "SeGW1",
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[64]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "Loc_Info": {
+            "identifier": "Loc_Info",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[200]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "Area": {
+            "identifier": "Area",
+            "optional": false,
+            "rules": [{
+                "type": "maxLength[32]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "EMS_Port": {
+            "identifier": "EMS_Port",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[8]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "S1LinkList": {
+            "identifier": "S1LinkList",
+            "optional": true,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "maxLength[256]",
+                "prompt": "{name}は{ruleValue}文字より長くすることはできません。"
+            }]
+        },
+        "henb_id": {
+            "identifier": "henb_id",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "integer[1..10000]",
+                "prompt": "{name}は整数範囲（{ruleValue}）でなければなりません。"
+            }]
+        },
+        "start_date": {
+            "identifier": "start_date",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "minCount[1]",
+                "prompt": "{name}には少なくとも{ruleValue}の選択肢が必要です。"
+            }]
+        },
+        "end_date": {
+            "identifier": "end_date",
+            "optional": false,
+            "rules": [{
+                "type": "empty",
+                "prompt": "{name}には値が必要です。"
+            }, {
+                "type": "minCount[1]",
+                "prompt": "{name}には少なくとも{ruleValue}の選択肢が必要です。"
+            }]
+        }
+    }
+}

@@ -1,0 +1,37 @@
+div.container-ems-status {
+    display: grid;
+    grid-template-rows: 20px repeat(3, 25vh);
+    gap: 5px;
+}
+div.sector-ems-status {
+    display: flex;
+}
+div.sector-ems-status:nth-child(1) {
+    justify-content: flex-end;
+}
+div.area-ems-status:nth-child(1) {
+    flex-basis: 200px;
+}
+div.area-ems-status:nth-child(2) {
+    flex-grow: 1;
+}
+div.chart-ems-status {
+    width: 100%;
+    height: 100%;
+}
+div.title-ems-status {
+    margin: 0;
+    color: #888888;
+}
+div.data-ems-status {
+    font-size: 3em;
+    color: #222222;
+    margin: 0;
+}
+div.span-controls > .controls {
+    cursor: pointer;
+    font-size: 10px;
+    margin-left: 5px;
+    border: 1px solid #DDD;
+    padding: 3px 10px 4px 10px;
+}

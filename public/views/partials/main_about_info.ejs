@@ -1,0 +1,60 @@
+<div id="about-modal" class="eu-modal">
+    <div class="eu-modal-content container-about-main">
+        <div class="sector-about-main">
+            <span id="about-close-button" class="eu-close-button">×</span>
+            <h4 class="ui dividing"><span class="i18n" data-i18n="About EMS">About EMS</span></h4>
+        </div>
+        <div class="sector-about-main">
+            <div class="area-about-main">
+                <div class="ui segment item-about-main">
+                    <div class="ui fluid left labeled input">
+                        <img src="euvision_logo.gif" style="width: 100%;"/>
+                    </div>
+                </div>
+                <div class="item-about-main">
+                    <div class="ui fluid left labeled input">
+                        <label for="version-gui" class="ui grey label about-info"><span class="i18n" data-i18n="GUI">GUI</span></label>
+                        <input id="version-gui" type="text" placeholder="-" value="<%= guiVer %> (<%= guiRelDate %>)" readonly>
+                    </div>
+                </div>
+                <div class="item-about-main">
+                    <div class="ui fluid left labeled input">
+                        <label for="version-cli" class="ui grey label about-info"><span class="i18n" data-i18n="CLI">CLI</span></label>
+                        <input id="version-cli" type="text" placeholder="-" value="<%= cliVer %> (<%= cliRelDate %>)" readonly>
+                    </div>
+                </div>
+                <div class="item-about-main">
+                    <div class="ui fluid left labeled input">
+                        <label for="version-ems" class="ui grey label about-info"><span class="i18n" data-i18n="EMS">EMS</span></label>
+                        <input id="version-ems" type="text" placeholder="-" value="<%= emsVer %> (<%= emsRelDate %>)" readonly>
+                    </div>
+                </div>
+            </div>
+            <!-- <form id="form_about" class="ui form area-about-main">
+                <div class="ui segment field item-about-main">
+                    <div class="ui fluid left labeled large input">
+                        <img src="euvision_logo.gif" style="width: 100%;"/>
+                    </div>
+                </div>
+                <div class="ui field item-about-main">
+                    <div class="ui fluid left labeled large input">
+                        <label for="version-gui" class="ui grey label about-info"><span class="i18n" data-i18n="GUI">GUI</span></label>
+                        <input id="version-gui" type="text" placeholder="-" value="<%= guiVer %> (<%= guiRelDate %>)" readonly>
+                    </div>
+                </div>
+                <div class="ui field item-about-main">
+                    <div class="ui fluid left labeled large input">
+                        <label for="version-cli" class="ui grey label about-info"><span class="i18n" data-i18n="CLI">CLI</span></label>
+                        <input id="version-cli" type="text" placeholder="-" value="<%= cliVer %> (<%= cliRelDate %>)" readonly>
+                    </div>
+                </div>
+                <div class="ui field item-about-main">
+                    <div class="ui fluid left labeled large input">
+                        <label for="version-ems" class="ui grey label about-info"><span class="i18n" data-i18n="EMS">EMS</span></label>
+                        <input id="version-ems" type="text" placeholder="-" value="<%= emsVer %> (<%= emsRelDate %>)" readonly>
+                    </div>
+                </div>
+            </form> -->
+        </div>
+    </div>
+</div>

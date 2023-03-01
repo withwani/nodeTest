@@ -1,0 +1,199 @@
+<!doctype>
+<html>
+
+<head>
+    <%- //include('partials/head'); %>
+
+    <link rel="stylesheet" href="csslib/calendar.min.css" />
+    <link rel="stylesheet" href="csslib/buttons.dataTables.min.css" />
+
+    <!-- eu-style dataTables -->
+    <!-- <link rel="stylesheet" type="text/css" href="eu_dataTables.css" /> -->
+
+    <style>
+        .ui.small.table {
+            font-size: 85%;
+        }
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    </style>
+
+    <style>
+        /* Search Label에 기본적으로 설정된 값을 이 페이지에서 사용하지 않기 때문에 수동 입력함, eu_dataTables.css로 이동
+        div.dt-buttons {
+            margin-bottom: 5px;
+        } */
+    </style>
+</head>
+
+<body onload="onLoad()">
+    <!-- Header -->
+    <header>
+    </header>
+
+    <!-- Content -->
+    <eumain>
+        <nav></nav>
+        <article>
+            <% /* %>
+            <div class="ui small two column stackable grid">
+                <div class="column" style="width:12%; min-width:100px; position: relative; border:1px; border-style:double; border-color:#ddd;">
+                    <h2 class="ui centered header">
+                        <div class="content" style="margin-top:20px;"><i class="large red bar chart icon"></i><span class="i18n" data-i18n="Searching Condition">Searching Condition</span>
+                        </div>
+                        <div class="ui divider"></div>
+                    </h2>
+
+                    <form name="stat_form" id="stat_form" class="ui form" style="margin-left:3px;">
+                        <h6>
+                            <% var serverMode='single'; %>
+                            <% if (serverMode == "multi") { %>
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="eNB ID">eNB ID</span></label>
+                                <input type="text" name="henb_id" id="henb_id" placeholder="eNB ID" value="">
+                            </div>
+                            <% } else { %>
+                            <div class="field hidden" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="eNB ID">eNB ID</span></label>
+                                <input type="text" name="henb_id" id="henb_id" placeholder="eNB ID" value="1">
+                            </div>
+                            <% } %>
+
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="Stat Category">Stat Category</span></label>
+                                <div class="ui selection dropdown" style="min-width:0px;">
+                                    <input type="hidden" name="category" id="category" value="0">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text"><span class="i18n" data-i18n="None">None</span></div>
+                                    <div class="menu">
+                                        <div class="item" data-value="0"><span class="i18n" data-i18n="CPU Usage">CPU Usage</span></div>
+                                        <div class="item" data-value="3"><span class="i18n" data-i18n="Handover">Handover</span></div>
+                                        <div class="item" data-value="4"><span class="i18n" data-i18n="Inter&Intra handover">Inter&Intra handover</span></div>
+                                        <div class="item" data-value="5"><span class="i18n" data-i18n="Line Statistics">Line Statistics</span></div>
+                                        <div class="item" data-value="6"><span class="i18n" data-i18n="Paging">Paging</span></div>
+                                        <div class="item" data-value="7"><span class="i18n" data-i18n="PDCP">PDCP</span></div>
+                                        <div class="item" data-value="8"><span class="i18n" data-i18n="Random Access">Random Access</span></div>
+                                        <div class="item" data-value="9"><span class="i18n" data-i18n="RRC Connection">RRC Connection</span></div>
+                                        <div class="item" data-value="10"><span class="i18n" data-i18n="Attempted Redirection Info">Attempted Redirection Info</span></div>
+                                        <div class="item" data-value="11"><span class="i18n" data-i18n="RF Statistics">RF Statistics</span></div>
+                                        <div class="item" data-value="13"><span class="i18n" data-i18n="Radio Resource">Radio Resource</span></div>
+                                        <div class="item" data-value="14"><span class="i18n" data-i18n="User Info">User Info</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="Periodic">Periodic</span></label>
+                                <div class="ui selection dropdown" style="min-width:0px;">
+                                    <input type="hidden" name="periodic" id="periodic" value="1">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text"><span class="i18n" data-i18n="None">None</span></div>
+                                    <div class="menu">
+                                        <div class="item" data-value="0"><span class="i18n" data-i18n="5 minutes">5 minutes</span></div>
+                                        <div class="item" data-value="1"><span class="i18n" data-i18n="Hourly">Hourly</span></div>
+                                        <div class="item" data-value="2"><span class="i18n" data-i18n="Daily">Daily</span></div>
+                                        <div class="item" data-value="3"><span class="i18n" data-i18n="Weekly">Weekly</span></div>
+                                        <div class="item" data-value="4"><span class="i18n" data-i18n="Monthly">Monthly</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="Start Time">Start Time</span></label>
+                                <div name="start_calendar" id="start_calendar" class="ui calendar">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" name="start_date" id="start_date" placeholder="Date/Time" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="End Time">End Time</span></label>
+                                <div name="end_calendar" id="end_calendar" class="ui calendar">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" name="end_date" id="end_date" placeholder="Date/Time" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:20px">
+                                <label><span class="i18n" data-i18n="Chart Type">Chart Type</span></label>
+                                <div class="ui selection dropdown" style="min-width:0px;">
+                                    <input type="hidden" name="type" id="type" value="0">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text"><span class="i18n" data-i18n="None">None</span></div>
+                                    <div class="menu">
+                                        <div class="item" data-value="0"><span class="i18n" data-i18n="line">line</span></div>
+                                        <div class="item" data-value="1"><span class="i18n" data-i18n="bar">bar</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:20px">
+                                <div id="execute" class="ui teal submit button"><span class="i18n" data-i18n="Execute">Execute</span></div>
+                                <div class="ui error message" style="overflow:auto; margin:10px;"></div>
+                            </div>
+                            <div name="save_div" id="save_div" class="field hidden" style="margin-top:20px">
+                                <div type="button" id="save" class="ui red button"><span class="i18n" data-i18n="Save Date">Save Date</span></div>
+                            </div>
+                        </h6>
+                    </form>
+                </div>
+                <% */ %>
+
+                <div name="stat_div" id="stat_div" class="column" style="width:88%; overflow:true; min-width:400px; position: relative;">
+                    <div id="div-stat-chart" style="width:100%; height: 550px; margin:5px;">
+                        <!-- Dimmer Area -->
+                        <!-- <div id="div-stat-dimmer" class="ui inverted dimmer">
+                            <div id="div-stat-loader" class="ui massive text loader">Loading</div>
+                        </div> -->
+                        <!-- Stat Chart Area -->
+                        <div id="stat_chart" style="margin:5px;"></div>
+                    </div>
+                    <div id="div-stat-table">
+                        <!-- Stat Table Area -->
+                        <table name="stat_table" id="stat_table" class="ui small celled red table" style="margin-top: 0px; width: 100%;">
+                            <thead id="stat_table_thead">
+                                <tr id="stat_table_thead_tr">
+                                    <th><span class="i18n" data-i18n="1">1</span></th>
+                                    <th><span class="i18n" data-i18n="2">2</span></th>
+                                    <th><span class="i18n" data-i18n="3">3</span></th>
+                                    <th><span class="i18n" data-i18n="4">4</span></th>
+                                    <th><span class="i18n" data-i18n="5">5</span></th>
+                                    <th><span class="i18n" data-i18n="6">6</span></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <aside></aside>
+    </eumain>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+</body>
+
+<%- include('partials/import_js'); %>
+
+<script type="text/javascript" src="jslib/moment-with-locales.js"></script>
+
+<script type="text/javascript" src="jslib/calendar.min.js"></script>
+<script type="text/javascript" src="jslib/zingchart.min.js"></script>
+
+<script type="text/javascript" src="jslib/async.min.js"></script>
+
+<script type="text/javascript" src="jslib/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="jslib/buttons.flash.min.js"></script>
+<script type="text/javascript" src="jslib/buttons.html5.min.js"></script>
+
+<script type="text/javascript" src="views/main2.js"></script>
+
+</html>
