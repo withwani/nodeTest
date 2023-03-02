@@ -4,7 +4,7 @@
 // });
 
 // 1. 웹소켓 클라이언트 객체 생성
-const webSocket = new WebSocket("ws://192.168.28.113:33000");
+const webSocket = new WebSocket("ws://192.168.219.188:3000");
 // const webSocket = new WebSocket("ws://127.0.0.1:3000");
 // const webSocket = new WebSocket("ws://localhost:3000");
 
@@ -37,29 +37,11 @@ let count = 1; //, timer;
 document.getElementById("btn_send").onclick = function () {
 
     if (webSocket.readyState === webSocket.OPEN) { // 연결 상태 확인
-        // webSocket.send(`증가하는 숫자를 보냅니다 => ${count}`); // 웹소켓 서버에게 메시지 전송
-        // count++; // 보낼때마다 숫자를 1씩 증가
-        /* if (!timer) {
-            timer = setInterval(() => {
-                webSocket.send(`{"data":[{"bleno":8,"dist":1,"default":-63,"kf_c":-63,"kf_java":-63,"index":"20230223113406","status":"0","date":"2023-02-23 11:36:27.686"}]}`);
-            }, 500);
-        } */
         webSocket.send(`start`); // 웹소켓 서버에게 메시지 전송
     } else {
         alert("연결된 웹소켓 서버가 없습니다.");
     }
 }
-/* let count = 1;
-document.getElementById("btn_send").onclick = function () {
-
-    if (webSocket.readyState === webSocket.OPEN) { // 연결 상태 확인
-        webSocket.send(`증가하는 숫자를 보냅니다 => ${count}`); // 웹소켓 서버에게 메시지 전송
-        count++; // 보낼때마다 숫자를 1씩 증가
-
-    } else {
-        alert("연결된 웹소켓 서버가 없습니다.");
-    }
-} */
 
 document.getElementById("btn_stop").onclick = function () {
 
@@ -178,13 +160,15 @@ window.addEventListener('load', () => {
         //real-time feed
         refresh: {
             type: 'feed',
-            transport: 'http',
-            // url: 'https://us-central1-zingchart-com.cloudfunctions.net/public_http_feed?min=0&max=40&plots=1',
-            url: 'https://us-central1-zingchart-com.cloudfunctions.net/public_http_feed?min=0&max=100&plots=2',
+            transport: 'websockets',
+            // url: 'wss://zingchart-ws-demo.glitch.me',
+            url: 'ws://192.168.219.188:3000',
+            method: 'push'
             interval: 200,
-            maxTicks: 20,
+            maxTicks: 10,
             adjustScale: true,
-            resetTimeout: 60,
+            resetTimeout: 10,
+            stopTimeout: 30
         },
         plot: {
             shadow: 1,

@@ -200,13 +200,13 @@ if (cluster.isMaster) { // 마스터일 경우
 
         // 2) 클라이언트에게 메시지 전송
         if (ws.readyState === ws.OPEN) { // 연결 여부 체크
-            ws.send(`클라이언트[${ip}] 접속을 환영합니다 from 서버`); // 데이터 전송
+            ws.send(`Client[${ip}] conneced from server`); // 데이터 전송
         }
 
         // 3) 클라이언트로부터 메시지 수신 이벤트 처리
         ws.on('message', (msg) => {
             console.log(`클라이언트[${ip}]에게 수신한 메시지 : ${msg}`);
-            ws.send('메시지 잘 받았습니다! from 서버')
+            ws.send('Received a message from server!')
 
 
             if (msg == "start") {
@@ -225,6 +225,30 @@ if (cluster.isMaster) { // 마스터일 경우
             } else if (msg == "stop") {
                 // stop sending msg for test
                 if (timer) clearInterval(timer);
+            } else if (msg === 'zingchart.startfeed') {
+                // do nothing
+            } else if (msg === 'zingchart.stopfeed') {
+                // clear timeout
+                clearInterval(socketTimeoutId);
+            } else if (msg === 'zingchart.push') {
+                // do nothing
+            } else if (msg === 'zingchart.feed') {
+                // start sending values to client
+                socketTimeoutId = setInterval(() => {
+                    // send a single object containing multiple properties
+                    let tick = {};
+                    // format the json to be
+                    // {
+                    //   plot0: 9
+                    //   plot1: 10
+                    // }
+                    for (let i = 0; i < plots; i++) {
+                        tick[`plot${i}`] = Math.random() * (max - min) + min
+                    }
+                    // add date to the json object
+                    tick['scale-x'] = Date.now();
+                    ws.send(JSON.stringify(tick));
+                }, 200);
             }
         })
 
