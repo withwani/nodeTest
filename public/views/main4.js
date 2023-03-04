@@ -163,7 +163,7 @@ window.addEventListener('load', () => {
             transport: 'websockets',
             // url: 'wss://zingchart-ws-demo.glitch.me',
             url: 'ws://192.168.219.188:3000',
-            method: 'push'
+            method: 'push',
             interval: 200,
             maxTicks: 10,
             adjustScale: true,

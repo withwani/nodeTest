@@ -1,23 +1,30 @@
-version: "3.3"
+version: "3"
 services:
-  db-mongo:
-    image: mongo:latest
-    container_name: taglessMongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - ~/node/tagless/data/mongo:/data/db
+    mongodb:
+        image: mongo:4.4
+        container_name: testMongo
+        expose:
+            - 27017
+        ports:
+            - "27017:27017"
+        volumes:
+            - /media/usb-sandisk-32gb/data/mongo:/data/db
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=root
+            - MONGO_INITDB_DATABASE=admin
+        entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "r0"]
 
-  node:
-    image: test/node-app:0.1
-    container_name: taglessNode
-    ports: 
-      - "33000:3000"
-    volumes:
-      - ~/node/tagless/webapps:/usr/src/app
-      - ~/node/tagless/logs:/usr/src/logs
-      - ~/node/tagless/temp:/usr/src/temp
-    depends_on:
-      - db-mongo
-    tty: true
-    stdin_open: true 
+    node:
+        image: node:latest
+        container_name: testNode
+        ports:
+            - "3000:3000"
+        volumes:
+            - ~/repo/nodeTest:/usr/src/app
+            - ~/data/logs:/usr/src/logs
+            - ~/data/temp:/usr/src/temp
+        depends_on:
+            - mongodb
+        tty: true
+        stdin_open: true
