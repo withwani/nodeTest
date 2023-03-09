@@ -1,6 +1,6 @@
-const cluster = require('cluster');
+// const cluster = require('cluster');
 const os = require('os');
-const uuid = require('uuidjs');
+// const uuid = require('uuidjs');
 
 // 접속 포트 지정
 const port = process.argv[2] || 3000;
@@ -13,50 +13,50 @@ var cpuCount = os.cpus().length; // CPU 수
 var workerCount = 6; // cpuCount / 2; // 2개의 컨테이너에 돌릴 예정 CPU수 / 2
 var timer;
 
-if (cluster.isMaster) { // 마스터일 경우
-    console.log(`process.argv:`, process.argv);
-    console.log(`port:`, port);
-    console.log(`Server ID:`, instance_id);
-    console.log(`Server CPU count:`, workerCount);
-    console.log(`${workerCount} servers will be created.\n`);
+// if (cluster.isMaster) { // 마스터일 경우
+//     console.log(`process.argv:`, process.argv);
+//     console.log(`port:`, port);
+//     console.log(`Server ID:`, instance_id);
+//     console.log(`Server CPU count:`, workerCount);
+//     console.log(`${workerCount} servers will be created.\n`);
 
-    //워커 메시지 리스너
-    var workerMsgListener = function (msg) {
-        var worker_id = msg.worker_id;
+//     //워커 메시지 리스너
+//     var workerMsgListener = function (msg) {
+//         var worker_id = msg.worker_id;
 
-        //마스터 아이디 요청
-        if (msg.cmd === 'MASTER_ID') {
-            cluster.workers[worker_id].send({
-                cmd: 'MASTER_ID',
-                master_id: instance_id
-            });
-        }
-    }
+//         //마스터 아이디 요청
+//         if (msg.cmd === 'MASTER_ID') {
+//             cluster.workers[worker_id].send({
+//                 cmd: 'MASTER_ID',
+//                 master_id: instance_id
+//             });
+//         }
+//     }
 
-    //CPU 수 만큼 워커 생성
-    for (let i = 0; i < workerCount; i++) {
-        console.log(`Worker created. [${i + 1}/${workerCount}]`);
-        var worker = cluster.fork();
+//     //CPU 수 만큼 워커 생성
+//     for (let i = 0; i < workerCount; i++) {
+//         console.log(`Worker created. [${i + 1}/${workerCount}]`);
+//         var worker = cluster.fork();
 
-        //워커의 요청메시지 리스너
-        worker.on('message', workerMsgListener);
-    }
+//         //워커의 요청메시지 리스너
+//         worker.on('message', workerMsgListener);
+//     }
 
-    //워커가 online상태가 되었을때
-    cluster.on('online', function (worker) {
-        console.log(`Worker online - wid: [${worker.process.pid}]`);
-    });
+//     //워커가 online상태가 되었을때
+//     cluster.on('online', function (worker) {
+//         console.log(`Worker online - wid: [${worker.process.pid}]`);
+//     });
 
-    //워커가 죽었을 경우 다시 살림
-    cluster.on('exit', function (worker) {
-        console.log(`Worker destoryed - wid: [${worker.process.pid}]`);
-        console.log('Other worker will be created.');
+//     //워커가 죽었을 경우 다시 살림
+//     cluster.on('exit', function (worker) {
+//         console.log(`Worker destoryed - wid: [${worker.process.pid}]`);
+//         console.log('Other worker will be created.');
 
-        var worker = cluster.fork();
-        //워커의 요청메시지 리스너
-        worker.on('message', workerMsgListener);
-    });
-} else if (cluster.isWorker) { //워커일 경우
+//         var worker = cluster.fork();
+//         //워커의 요청메시지 리스너
+//         worker.on('message', workerMsgListener);
+//     });
+// } else if (cluster.isWorker) { //워커일 경우
     const path = require('path');
     const express = require('express');
     const app = express();
@@ -69,8 +69,8 @@ if (cluster.isMaster) { // 마스터일 경우
     //     io: io
     // });
 
-    var worker_id = cluster.worker.id;
-    var master_id;
+    // var worker_id = cluster.worker.id;
+    // var master_id;
 
     // EJS setting
     app.set('view engine', 'ejs');
@@ -98,16 +98,16 @@ if (cluster.isMaster) { // 마스터일 경우
     console.log(`Completed registering of the static path!!!`);
 
     //마스터에게 master_id 요청
-    process.send({
-        worker_id: worker_id,
-        cmd: 'MASTER_ID'
-    });
+    // process.send({
+    //     worker_id: worker_id,
+    //     cmd: 'MASTER_ID'
+    // });
 
-    process.on('message', function (msg) {
-        if (msg.cmd === 'MASTER_ID') {
-            master_id = msg.master_id;
-        }
-    });
+    // process.on('message', function (msg) {
+    //     if (msg.cmd === 'MASTER_ID') {
+    //         master_id = msg.master_id;
+    //     }
+    // });
 
     // CORS 설정, 클라이언트 접속시 에러 발생을 막기 위해
     app.all("/*", function (req, res, next) {
@@ -264,4 +264,4 @@ if (cluster.isMaster) { // 마스터일 경우
             if (timer) clearInterval(timer);
         })
     });
-}
+// }

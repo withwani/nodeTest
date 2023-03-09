@@ -1,13 +1,5 @@
-version: "3.3"
+version: "3"
 services:
-  db-mongo:
-    image: mongo:latest
-    container_name: taglessMongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - ~/node/tagless/data/mongo:/data/db
-
   node:
     image: test/node-app:0.1
     container_name: taglessNode
@@ -17,7 +9,5 @@ services:
       - ~/node/tagless/webapps:/usr/src/app
       - ~/node/tagless/logs:/usr/src/logs
       - ~/node/tagless/temp:/usr/src/temp
-    depends_on:
-      - db-mongo
     tty: true
     stdin_open: true 

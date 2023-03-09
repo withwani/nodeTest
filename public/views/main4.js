@@ -96,6 +96,25 @@ function randomizeInterval() {
     });
     output.textContent = 'Interval set to: ' + interval;
 }
+
+function randomizeColor() {
+    return Math.floor(Math.random()*16777215).toString(16);
+}
+
+function makeSeries(cnt) {
+    let arr = [];
+    for (int i = 0; i < cnt; cnt++) {
+        arr.push({
+            values: [],
+            lineColor: randomizeColor,
+            text: 'Ble' + (i+1)
+        })
+    }
+
+    return arr;
+}
+
+
 // window:load event for Javascript to run after HTML
 // because this Javascript is injected into the document head
 window.addEventListener('load', () => {
@@ -162,7 +181,7 @@ window.addEventListener('load', () => {
             type: 'feed',
             transport: 'websockets',
             // url: 'wss://zingchart-ws-demo.glitch.me',
-            url: 'ws://192.168.219.188:3000',
+            url: 'ws://192.168.28.113:33000',
             method: 'push'
             interval: 200,
             maxTicks: 10,
@@ -183,15 +202,7 @@ window.addEventListener('load', () => {
             },
             aspect: 'spline'
         },
-        series: [{
-            values: [],
-            lineColor: '#2196F3',
-            text: 'Blue Line'
-        }, {
-            values: [],
-            lineColor: '#ff9800',
-            text: 'Orange Line'
-        }]
+        series: makeSeries(20)
     };
 
     // render chart with width and height to
